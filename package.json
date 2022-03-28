@@ -1,0 +1,16 @@
+{
+  "name": "typescript_prac01",
+  "version": "1.0.0",
+  "description": "Learning Typescript by making a Blockchain with it",
+  "main": "index.js",
+  "repository": "https://github.com/grzelkowska/typechain",
+  "author": "Grzelkowska",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^4.6.3"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "prestart": "tsc"
+  }
+}
