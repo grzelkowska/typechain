@@ -1,5 +1,4 @@
 import * as CryptoJS from "crypto-js";
-import { createNew } from "typescript";
 
 class Block {
   static calculateBlockHash = (
@@ -41,9 +40,7 @@ class Block {
 const genesisBlock: Block = new Block(0, "123213213", "", "Hello", 123456);
 let blockchain: Block[] = [genesisBlock];
 
-console.log(blockchain);
-
-const getBlockchain = (): Block[] => blockchain;
+// const getBlockchain = (): Block[] => blockchain;
 
 const getLatestBlock = (): Block => blockchain[blockchain.length - 1];
 
@@ -66,6 +63,7 @@ const createNewBlock = (data: string): Block => {
     data,
     newTimestamp
   );
+  addBlock(newBlock);
   return newBlock;
 };
 
@@ -78,9 +76,9 @@ const getHashForBlock = (aBlock: Block): string =>
   );
 
 const isBlockValid = (candidateBlock: Block, previousBlock: Block): boolean => {
-  if (Block.validateStructure(candidateBlock)) {
+  if (!Block.validateStructure(candidateBlock)) {
     return false;
-  } else if (previousBlock.index + 1 !== candiateBlock.index) {
+  } else if (previousBlock.index + 1 !== candidateBlock.index) {
     return false;
   } else if (previousBlock.hash !== candidateBlock.previousHash) {
     return false;
@@ -97,6 +95,11 @@ const addBlock = (candidateBlock: Block): void => {
   }
 };
 
-// console.log(createNewBlock('hello'), createNewBlock("bye bye"))
+createNewBlock("second block");
+createNewBlock("third block");
+createNewBlock("fourth block");
+
+console.log(blockchain);
+
 
 export {};
